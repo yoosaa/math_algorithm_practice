@@ -14,3 +14,6 @@ for i in str(input()).split(' '):
   s += int(i)
 
 print(s % 100)
+
+#6
+print(2*int(input())+3)
