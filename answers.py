@@ -28,3 +28,12 @@ for i in range(1, int(test_line[0])+1):
   elif i % int(test_line[2]) == 0:
     total += 1
 print(total)
+
+#8
+input_line = input().split(' ')
+total = 0
+for i in range(1, int(input_line[0])+1):
+  for j in range(1, int(input_line[0])+1):
+    if (i + j) <= int(input_line[1]):
+      total += 1
+print(total)
