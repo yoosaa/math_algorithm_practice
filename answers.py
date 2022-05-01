@@ -56,3 +56,46 @@ for i in range(2, int(input())+1):
   # breakしなかった（iがjで一度も割り切れなかった(＝素数)とき出力）
   else:
     print(i, end=' ')
+
+#12
+import math
+
+def judge():
+  target = int(input())
+  for i in range(2, math.floor((target+1)**0.5)):
+    if target % i == 0:
+      print('No')
+      return
+  print('Yes')
+judge()
+
+#13
+import math
+
+def judge():
+  target = int(input())
+  for i in range(1, math.floor((target)**0.5)+1):
+    if target % i != 0:
+      continue
+    elif target % i == 0:
+      print(i)
+      print(math.floor(target / i))
+judge()
+
+#14
+import math
+
+def judge():
+  target = int(input())
+  result = []
+  for i in range(2, math.floor((target)**0.5)+1):
+    while True:
+      if target % i == 0:
+        result.append(i)
+        target = target // i
+      else:
+        break
+  if target > math.floor((target)**0.5):
+    result.append(target)
+  print(*result)
+judge()
