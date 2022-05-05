@@ -83,6 +83,7 @@ def judge():
 judge()
 
 #14
+# 素因数分解
 import math
 
 def judge():
@@ -99,3 +100,26 @@ def judge():
     result.append(target)
   print(*result)
 judge()
+
+#15
+# 最大公約数
+import math
+
+res = 0
+def euclideanAlgo(a,b):
+  global res
+  if a > b:
+    a = a % b
+  elif b > a:
+    b = b % a
+
+  if a != 0 and b != 0:
+    euclideanAlgo(a, b)
+  elif a == 0:
+    res = b
+  elif b == 0:
+    res = a
+
+fir,sec = input().split(' ')
+euclideanAlgo(int(fir),int(sec))
+print(res)
