@@ -123,3 +123,36 @@ def euclideanAlgo(a,b):
 fir,sec = input().split(' ')
 euclideanAlgo(int(fir),int(sec))
 print(res)
+
+#16
+# ３つ以上の数の最大公約数
+import math
+
+def euclideanAlgo(a,b):
+  if b == 0:
+    return a
+    
+  s = a % b
+  return euclideanAlgo(b, s)
+  
+calcIndex = 0  
+def commonDivisor(ary):
+  global calcIndex
+  res = 0
+  
+  for i in range(aryLength - 1):
+    if i == 0:
+      res = euclideanAlgo(ary[0], ary[1])
+      calcIndex = 2
+    else:
+      res = euclideanAlgo(res, ary[calcIndex])
+      calcIndex += 1
+      
+  print(res)
+
+aryLength = int(input())
+nums = input().split(' ')
+changed = [int(a) for a in nums]
+changed.sort()
+changed.reverse()
+commonDivisor(changed)
