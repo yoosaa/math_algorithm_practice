@@ -131,15 +131,15 @@ import math
 def euclideanAlgo(a,b):
   if b == 0:
     return a
-    
+
   s = a % b
   return euclideanAlgo(b, s)
-  
-calcIndex = 0  
+
+calcIndex = 0
 def commonDivisor(ary):
   global calcIndex
   res = 0
-  
+
   for i in range(aryLength - 1):
     if i == 0:
       res = euclideanAlgo(ary[0], ary[1])
@@ -147,8 +147,46 @@ def commonDivisor(ary):
     else:
       res = euclideanAlgo(res, ary[calcIndex])
       calcIndex += 1
-      
+
   print(res)
+
+aryLength = int(input())
+nums = input().split(' ')
+changed = [int(a) for a in nums]
+changed.sort()
+changed.reverse()
+commonDivisor(changed)
+
+
+#18
+#最小公倍数
+import math
+
+def euclideanAlgo(a,b):
+  if b == 0:
+    return a
+
+  s = a % b
+  return euclideanAlgo(b, s)
+
+def leastCommonMultiple(a, b):
+  return (a / euclideanAlgo(a, b)) * b
+
+calcIndex = 0
+def commonDivisor(ary):
+  global calcIndex
+  res = 0
+
+  for i in range(aryLength - 1):
+    if i == 0:
+      res = leastCommonMultiple(ary[0], ary[1])
+      calcIndex = 2
+    else:
+      res = leastCommonMultiple(res, ary[calcIndex])
+      calcIndex += 1
+
+  print(math.ceil(res))
+
 
 aryLength = int(input())
 nums = input().split(' ')
