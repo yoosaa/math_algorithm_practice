@@ -194,3 +194,15 @@ changed = [int(a) for a in nums]
 changed.sort()
 changed.reverse()
 commonDivisor(changed)
+
+#18
+# 組み合わせ
+aryLength = int(input())
+nums = input().split(' ')
+changed = [int(a) for a in nums]
+a = list(filter(lambda x: x == 100, changed))
+b = list(filter(lambda x: x == 200, changed))
+c = list(filter(lambda x: x == 300, changed))
+d = list(filter(lambda x: x == 400, changed))
+
+print(len(a)*len(d) + len(c)*len(b))
