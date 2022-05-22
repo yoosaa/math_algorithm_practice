@@ -206,3 +206,17 @@ c = list(filter(lambda x: x == 300, changed))
 d = list(filter(lambda x: x == 400, changed))
 
 print(len(a)*len(d) + len(c)*len(b))
+
+#19
+import math
+
+aryLength = int(input())
+nums = input().split(' ')
+changed = [int(a) for a in nums]
+a = list(filter(lambda x: x == 1, changed))
+b = list(filter(lambda x: x == 2, changed))
+c = list(filter(lambda x: x == 3, changed))
+
+case = (len(a)*(len(a)-1))/2 + (len(b)*(len(b)-1))/2 + (len(c)*(len(c)-1))/2
+
+print(math.floor(case))
