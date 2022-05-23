@@ -220,3 +220,20 @@ c = list(filter(lambda x: x == 3, changed))
 case = (len(a)*(len(a)-1))/2 + (len(b)*(len(b)-1))/2 + (len(c)*(len(c)-1))/2
 
 print(math.floor(case))
+
+
+#20
+aryLength = int(input())
+nums = input().split(' ')
+changed = [int(a) for a in nums]
+
+total = 0
+for a in range(len(changed)):
+  for b in range(a,):
+    for c in range(b,):
+      for d in range(c,):
+        for e in range(d,):
+          if (changed[a] + changed[b] + changed[c] + changed[d] + changed[e]) == 1000:
+            total += 1
+
+print(total)
