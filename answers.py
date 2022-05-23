@@ -237,3 +237,18 @@ for a in range(len(changed)):
             total += 1
 
 print(total)
+
+#21
+import math
+
+a, b = input().split(' ')
+
+numerator = 1
+for i in range(int(a) - int(b) + 1, int(a) + 1):
+  numerator *= i
+
+denominator = 1
+for s in range(0, int(b)):
+  denominator *= (s + 1)
+
+print(math.floor(numerator / denominator))
