@@ -297,3 +297,15 @@ def expected(a, b):
   return total
 
 print(expected(A, B))
+
+#26
+N = int(input())
+
+def expected(n):
+  total = 0
+  for i in range(1, N+1):
+    total += 1*N / i
+
+  return total
+
+print(expected(N))
