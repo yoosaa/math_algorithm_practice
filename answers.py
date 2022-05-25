@@ -252,3 +252,21 @@ for s in range(0, int(b)):
   denominator *= (s + 1)
 
 print(math.floor(numerator / denominator))
+
+#22
+# ちょっとわかんないのでパス
+
+#23
+# 期待値
+N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+def expected(ary):
+  total = 0
+  for i in ary:
+    total += i
+
+  return total / len(ary)
+
+print(expected(A) + expected(B))
