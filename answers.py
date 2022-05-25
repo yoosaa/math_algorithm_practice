@@ -270,3 +270,16 @@ def expected(ary):
   return total / len(ary)
 
 print(expected(A) + expected(B))
+
+#24
+N = int(input())
+
+def expected():
+  total = 0
+  for _ in range(N):
+    ary = list(map(int, input().split()))
+    total += ary[1] / ary[0]
+
+  return total
+
+print(expected())
