@@ -283,3 +283,17 @@ def expected():
   return total
 
 print(expected())
+
+#25
+N = int(input())
+A = list(map(int, input().split()))
+B = list(map(int, input().split()))
+
+def expected(a, b):
+  total = 0
+  for i in range(N):
+    total += (a[i] / 3) + ((b[i] * 2) / 3)
+
+  return total
+
+print(expected(A, B))
