@@ -309,3 +309,34 @@ def expected(n):
   return total
 
 print(expected(N))
+
+# カエルの移動（2本目の柱までの最小コスト）
+n = int(input())
+h = list(map(int, input().split()))
+
+dp = [10**5+1] * n
+
+dp[0] = 0
+dp[1] = abs(h[1] - h[0])
+
+for i in range(2, n):
+  dp[i] = min(abs(h[i]-h[i-1])+dp[i-1], abs(h[i]-h[i-2])+dp[i-2])
+
+print(dp[-1])
+
+# ナップサック問題
+N = 3  # 荷物の数
+W = 10  # ナップサックの許容量
+w = [9, 6, 4] # 荷物それぞれの重さの配列
+v = [15, 10, 6] # 荷物それぞれの価値の配列
+
+dp = [[0]*(W+1) for i in range(N+1)]
+
+for i in range(N):
+  for j in range(W+1):
+    if j < w[i]:
+      dp[i+1][j] = dp[i][j] # ０を入れる（重量オーバーしてるから）
+    else:
+      dp[i+1][j] = max(dp[i][j], dp[i][j-w[i]]+v[i]) # 0じゃないので、該当の価値を計算していれる
+
+print(dp[N][W])
