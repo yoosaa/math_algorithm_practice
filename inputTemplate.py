@@ -118,3 +118,24 @@ def pow(x, n):
         x =  x * x
         n >>= 1
     return ans
+
+####  素数判定
+####  いろいろある：https://qiita.com/ppza53893/items/e0f464340d6f97760cd5
+####  エラトステネスの篩が有名だが、数が大きすぎるとメモリを食い過ぎる
+####  下記は√N調べれば、素数かどうかは判別できるというのを利用したもの
+def sq(N):
+    if N < 2:
+        return'NO'
+    elif N == 2:
+        return 'YES'
+    elif N % 2 == 0:
+        return 'NO'
+
+    i = 3
+    while i <= N ** 0.5:
+        if N % i == 0:
+            return 'NO'
+        i += 2
+    return 'YES'
+    
+print(sq(n))
