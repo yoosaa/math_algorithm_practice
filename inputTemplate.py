@@ -107,3 +107,14 @@ while True:
         end += 1
     else:
         end += 1
+
+####  繰り返し２乗法
+####  https://output-zakki.com/fast_pow_calc/
+def pow(x, n):
+    ans = 1
+    while n > 0:
+        if n & 1 == 1:
+            ans = ans * x
+        x =  x * x
+        n >>= 1
+    return ans
