@@ -139,3 +139,14 @@ def sq(N):
     return 'YES'
     
 print(sq(n))
+
+####  最大公約数
+####  ユークリッドの互除法：https://qiita.com/Yuya-Shimizu/items/d82bbdf15d31e25cf544
+def gcd(a, b):
+    r = a % b
+
+    while r != 0:
+        a, b = b, r
+        r = a % b
+
+    return b
