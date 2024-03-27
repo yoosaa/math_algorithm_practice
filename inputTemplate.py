@@ -150,3 +150,23 @@ def gcd(a, b):
         r = a % b
 
     return b
+
+####  グラフ
+####  https://qiita.com/ell/items/2a327fe021fb7dafe07a
+####  隣接行列
+n, m = map(int, input().split())
+graph = [[0]*n for _ in range(n)]
+for _ in range(m):
+    a, b = map(int, input().split())
+    graph[a-1][b-1] = 1
+    graph[b-1][a-1] = 1  # 有向グラフなら消す
+print(graph)
+
+####  隣接リスト
+n, m = map(int, input().split())
+graph = [[] for _ in range(n)]
+for _ in range(m):
+    a, b = map(int, input().split())
+    graph[a-1].append(b-1)
+    graph[b-1].append(a-1)  # 有向グラフなら消す
+print(graph)
