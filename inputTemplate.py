@@ -172,6 +172,7 @@ for _ in range(m):
 print(graph)
 
 ####  隣接リストから深さ優先探索
+####  https://zenn.dev/syuya2036/articles/6e77df7083fc4f#%E6%B7%B1%E3%81%95%E5%84%AA%E5%85%88%E6%8E%A2%E7%B4%A2(dfs)
 n = int(input())
 
 # リストの元となるオブジェクト
