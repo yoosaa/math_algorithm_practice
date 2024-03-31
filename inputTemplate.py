@@ -170,3 +170,38 @@ for _ in range(m):
     graph[a-1].append(b-1)
     graph[b-1].append(a-1)  # 有向グラフなら消す
 print(graph)
+
+####  隣接リストから深さ優先探索
+n = int(input())
+
+# リストの元となるオブジェクト
+graph = {}
+for i in range(n):
+    graph[i] = set()
+
+# リスト作成
+for i in range(n-1):
+    a, b = map(int, input().split())
+
+    graph[a - 1].add(b - 1)
+    graph[b - 1].add(a - 1)
+
+# スタックの元
+stack = [0]
+
+# 訪問済みかどうかを記録する配列
+vis = [False] * n
+vis[0] = True
+
+print(1)
+# スタックが尽きるまで
+while len(stack) != 0:
+  s = stack.pop()
+  for e in graph[s]:
+    # 訪問済みならスキップ
+    if vis[e]:
+      print(s+1)
+      continue
+    # 未訪問なら該当のポイントを訪問済みにし、スタックに追加
+    vis[e] = True
+    stack.append(e)
