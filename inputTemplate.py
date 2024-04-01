@@ -177,10 +177,12 @@ n = int(input())
 
 # リストの元となるオブジェクト
 graph = {}
+####  nは頂点の数
 for i in range(n):
     graph[i] = set()
 
 # リスト作成
+####  n - 1は辺の数
 for i in range(n-1):
     a, b = map(int, input().split())
 
