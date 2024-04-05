@@ -208,3 +208,18 @@ while len(stack) != 0:
     # 未訪問なら該当のポイントを訪問済みにし、スタックに追加
     vis[e] = True
     stack.append(e)
+
+###  区間和
+###  下記はｎ個のデータ中のk個の区間の和における最大値とその最初のindexを求めるもの
+n, k = map(int, input().split())
+data = list(map(int, input().split()))
+
+ave = [None] * (n - k + 1)
+ave[0] = sum(data[:k])
+
+for i in range(1, n - k + 1):
+    ave[i] = ave[i - 1] - data[i - 1] + data[i - 1 + k]
+
+m = max(ave)
+
+print(ave.count(m), ave.index(m) + 1)
