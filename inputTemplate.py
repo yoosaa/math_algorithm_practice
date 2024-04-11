@@ -223,3 +223,42 @@ for i in range(1, n - k + 1):
 m = max(ave)
 
 print(ave.count(m), ave.index(m) + 1)
+
+####  リスト（線形）
+M = int(input())
+data = [None] * M
+pointer = [None] * M
+head = 0
+
+def add_list(d):
+  n = -1
+  for i in range(M):
+    if data[i] == None:
+      n = i
+      break
+    
+  if n == -1:
+    return False
+    
+  for i in range(M):
+    if data[i] != None and pointer[i] == None:
+      pointer[i] = n
+      break
+    
+  data[n] = d
+  pointer[n] = None
+  
+  return True
+  
+def show_list():
+  p = head
+  while True:
+    print(data[p])
+    if pointer[p] == None:
+      break
+    p = pointer[p]
+    
+for i in range(M):
+  add_list(int(input()))
+
+show_list()
