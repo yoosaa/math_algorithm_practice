@@ -262,3 +262,135 @@ for i in range(M):
   add_list(int(input()))
 
 show_list()
+
+####  片方向リスト
+####  https://yottagin.com/?p=2364
+class Node():
+    #  それぞれのノードはデータと次のノードへのリンクを持つ。
+    def __init__(self, data, next = None):
+        self.data = data
+        self.next = next
+    # データを設定する。
+    def set_data(self, data):
+        self.data = data
+    # データを取得する。
+    def get_data(self):
+        return self.data
+    # 次のノードを設定する。
+    def set_next(self, next):
+        self.next = next
+    # 次のノードを取得する。
+    def get_next(self):
+        return self.next
+
+class LinkedList():
+    # リストの先頭
+    def __init__(self):
+        self.head = None
+        self.length = 0
+    def list_length(self):
+        temp = self.head
+        count = 0
+        while temp is not None:
+            count += 1
+            temp = temp.get_next()
+        return count
+    # データの出力
+    def print_linked_list(self):
+        temp = self.head
+        while temp:
+            print(temp.data)
+            temp = temp.next
+    # 先頭にノードを挿入する。
+    def insert_at_start(self, data):
+        length = self.list_length()
+        new_node = Node(data)
+        if self.head == None:
+            self.head = new_node
+        else:
+            new_node.set_next(self.head)
+            self.head = new_node
+        self.length = length + 1
+    
+    # 最後にノードを挿入する。
+    def insert_at_end(self, data):
+        length = self.list_length()
+        new_node = Node(data)
+        temp = self.head
+        # 最後のノードまで移動する。
+        while temp.get_next() is not None:  
+            temp = temp.get_next()
+        temp.next = new_node
+        self.length = length  + 1
+    # ある場所にノードを挿入する。
+    def insert_position(self, position, data):
+        if position < 0 or position > self.length:
+            raise ValueError
+        else:
+            if position == 0:
+                self.insert_at_start(data)
+            else:
+                if position == self.length:
+                    self.insert_at_end(data)
+                else:
+                    length = self.list_length()
+                    new_node = Node(data)
+                    count = 0
+                    temp = self.head
+                    while count < position -1:
+                        count += 1
+                        temp = temp.get_next()
+                    new_node.set_next(temp.get_next())
+                    temp.set_next(new_node)
+                    self.length = length + 1
+    # データに基づきノードを削除する。
+    def delete(self, data):
+        length = self.list_length()
+        temp = self.head
+        # 削除するノードが先頭の場合
+        if (temp.next is not None):
+            if(temp.data == data):
+                self.head = temp.get_next()
+                temp = None
+                self.length = length - 1
+                return
+            else:
+                #  ノードを検索する。
+                while temp.next is not None:
+                    if temp.data == data:
+                        break
+                    # 現在のノードを一つ前のノードとして保存し、次に進む。
+                    prev = temp          
+                    temp = temp.get_next()
+                # ノードが見つからなかった場合。
+                if temp is None:
+                    return
+                
+                self.length = length - 1
+                prev.next = temp.get_next()
+                return
+    # データの検索
+    def search(self, node, data):
+        if node is None:
+            return False
+        if node.data == data:
+            return True
+        return self.search(node.get_next(), data)
+        
+list = LinkedList()
+
+L, I, N = map(int, input().split())
+for l in range(L):
+  num = int(input())
+  if l == 0:
+    list.insert_at_start(num)
+  else:
+    list.insert_at_end(num)
+    
+    
+if I <= L:
+  list.insert_position(I - 1, N)
+elif I == L + 1:
+  list.insert_at_end(N)
+
+list.print_linked_list()
