@@ -264,7 +264,11 @@ for i in range(M):
 show_list()
 
 ####  片方向リスト
-####  https://yottagin.com/?p=2364
+####  https://yottagin.com/?p=2364# coding: utf-8
+# Your code here!
+# coding: utf-8
+# 自分の得意な言語で
+# Let's チャレンジ！！
 class Node():
     #  それぞれのノードはデータと次のノードへのリンクを持つ。
     def __init__(self, data, next = None):
@@ -311,7 +315,6 @@ class LinkedList():
             new_node.set_next(self.head)
             self.head = new_node
         self.length = length + 1
-    
     # 最後にノードを挿入する。
     def insert_at_end(self, data):
         length = self.list_length()
@@ -343,6 +346,29 @@ class LinkedList():
                     new_node.set_next(temp.get_next())
                     temp.set_next(new_node)
                     self.length = length + 1
+    # 指定の位置のデータを削除する
+    def delete_position(self, position):
+        position -= 1
+        if position < 0 or position > self.length:
+            raise ValueError
+        else:
+            length = self.list_length()
+            temp = self.head
+            if position == 0:
+                self.head = temp.get_next()
+                temp = None
+            else:
+              count = 0
+              prev = None
+              while count < position:
+                if temp is None:
+                  return
+                prev = temp
+                temp = temp.get_next()
+                count += 1
+              prev.next = temp.get_next()
+            self.length = length - 1
+            return
     # データに基づきノードを削除する。
     def delete(self, data):
         length = self.list_length()
@@ -379,18 +405,13 @@ class LinkedList():
         
 list = LinkedList()
 
-L, I, N = map(int, input().split())
+L, D = map(int, input().split())
 for l in range(L):
-  num = int(input())
-  if l == 0:
-    list.insert_at_start(num)
-  else:
-    list.insert_at_end(num)
-    
-    
-if I <= L:
-  list.insert_position(I - 1, N)
-elif I == L + 1:
-  list.insert_at_end(N)
-
+    inp = int(input())
+    if l == 0:
+        list.insert_at_start(inp)
+    else:
+        list.insert_position(l, inp)
+        
+list.delete_position(D)
 list.print_linked_list()
