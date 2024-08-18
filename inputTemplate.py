@@ -224,6 +224,26 @@ m = max(ave)
 
 print(ave.count(m), ave.index(m) + 1)
 
+### 別解（スライディングウィンドウ法にのっとる）
+n, k = map(int, input().split())
+visitors = list(map(int, input().split()))
+
+def campaign_period(visitors, k):
+    n = len(visitors)
+    sums = [None]
+    max_sum = sum(visitors[:k])
+    sums[0] = sum(visitors[:k])
+
+    for i in range(k, n):
+        sums.append(max_sum - visitors[i - k] + visitors[i])
+        max_sum = max_sum - visitors[i - k] + visitors[i]
+        
+    mx = max(sums);
+
+    print(sums.count(mx), sums.index(mx) + 1)
+    
+campaign_period(visitors, k);
+
 ####  リスト（線形）
 M = int(input())
 data = [None] * M
